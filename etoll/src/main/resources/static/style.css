@@ -1,0 +1,57 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f8fb;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    width: 900px;
+    margin: 2em auto;
+    padding: 2em;
+    background: #fff;
+    border-radius: 1em;
+    box-shadow: 0 0 10px #b0c4de;
+}
+h1, h2, h3 {
+    color: #2c3e50;
+    text-align: center;
+}
+form {
+    margin-bottom: 1.5em;
+}
+label {
+    display: block;
+    margin: .5em 0;
+}
+input, select, button {
+    margin: .2em .5em .2em 0;
+    padding: .3em;
+    font-size: 1em;
+}
+button {
+    background: #5f9ea0;
+    color: #fff;
+    border: none;
+    border-radius: .3em;
+    cursor: pointer;
+}
+button:hover {
+    background: #4682b4;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+}
+th, td {
+    padding: .5em;
+    border: 1px solid #b0c4de;
+    text-align: center;
+}
+#tollMessage {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #2980b9;
+    margin: 1em 0;
+    text-align: center;
+}
