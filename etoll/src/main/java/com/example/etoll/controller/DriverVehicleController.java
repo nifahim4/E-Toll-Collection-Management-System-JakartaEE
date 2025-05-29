@@ -7,12 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/vehicles")
 public class DriverVehicleController {
+
     @Autowired
     private DriverVehicleService service;
 
@@ -20,14 +22,14 @@ public class DriverVehicleController {
     private TollCalculator tollCalculator;
 
     @GetMapping
-    public List<DriverVehicle> list() {
+    public List<DriverVehicle> getAll() {
         return service.listAll();
     }
 
     @PostMapping
     public String add(@RequestBody DriverVehicle dv) {
         service.save(dv);
-        return tollCalculator.getTollMessage(dv.getVehicleType());
+        return tollCalculator.calculateToll(dv.getVehicleType());
     }
 
     @PutMapping("/{id}")
@@ -43,8 +45,8 @@ public class DriverVehicleController {
 
     @GetMapping("/search")
     public List<DriverVehicle> search(
-            @RequestParam("from") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime from,
-            @RequestParam("to") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime to) {
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to) {
         return service.searchByDate(from, to);
     }
 }
